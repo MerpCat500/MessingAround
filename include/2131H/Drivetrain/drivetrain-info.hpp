@@ -16,7 +16,7 @@
 class DrivetrainInfo {
 public:
   /**
-   * @brief Get a instance of the DrivetrainInfo class. Will create a new
+   * @brief Get an instance of the DrivetrainInfo class. Will create a new
    * instance if one doesn't exist.
    *
    * @param track_width Lateral distance between wheels
@@ -33,23 +33,90 @@ public:
                              float wheel_max_rpm, uint32_t motor_count,
                              uint32_t motor_max_rpm);
 
-  // Delete copy constructor and assignment operator to prevent copying
+  // Delete copy constructor to prevent copying
   DrivetrainInfo(const DrivetrainInfo &) = delete;
+
+  // Delete assignment operator to prevent moving
   DrivetrainInfo &operator=(const DrivetrainInfo &) = delete;
 
   // Getter methods
+
+  /**
+   * @brief Get the track width of the drivetrain.
+   * @return Track width in inches.
+   */
   float trackWidth() const;
+
+  /**
+   * @brief Get the track length of the drivetrain.
+   * @return Track length in inches.
+   */
   float trackLength() const;
+
+  /**
+   * @brief Get the mass of the robot.
+   * @return Robot mass in pounds (LBS).
+   */
   float robotMass() const;
+
+  /**
+   * @brief Get the wheel diameter.
+   * @return Wheel diameter in inches.
+   */
   float wheelDiameter() const;
+
+  /**
+   * @brief Get the wheel circumference.
+   * @return Wheel circumference in inches.
+   */
   float wheelCircumference() const;
+
+  /**
+   * @brief Get the maximum RPM of the wheels.
+   * @return Maximum wheel RPM.
+   */
   float wheelMaxRPM() const;
+
+  /**
+   * @brief Get the total number of motors.
+   * @return Motor count.
+   */
   uint32_t motorCount() const;
+
+  /**
+   * @brief Get the maximum RPM of the motors.
+   * @return Maximum motor RPM.
+   */
   uint32_t motorMaxRPM() const;
+
+  /**
+   * @brief Get the maximum torque of the motors.
+   * @return Maximum motor torque in Newton-meters (NM).
+   */
   uint32_t motorMaxNM() const;
+
+  /**
+   * @brief Get the gear ratio from the motor to the wheel.
+   * @return Gear ratio to the wheel.
+   */
   float gearRatioToWheel() const;
+
+  /**
+   * @brief Get the gear ratio from the wheel to the motor.
+   * @return Gear ratio to the motor.
+   */
   float gearRatioToMotor() const;
+
+  /**
+   * @brief Get the maximum speed of the drivetrain.
+   * @return Maximum speed in inches per second.
+   */
   float maxSpeed() const;
+
+  /**
+   * @brief Get the maximum acceleration of the drivetrain.
+   * @return Maximum acceleration in inches per second squared.
+   */
   float maxAcceleration() const;
 
 private:
