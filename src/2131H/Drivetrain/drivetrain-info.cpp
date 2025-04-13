@@ -49,6 +49,7 @@ constexpr DrivetrainInfo::DrivetrainInfo(
     pros::MotorGroup *right_motors_ptr,
     float slew_constant)
     : track_width(track_width),
+      track_width_half(track_width / 2.0f),
       track_length(track_length),
       robot_mass(robot_mass),
       wheel_diameter(wheel_diameter),
@@ -64,8 +65,11 @@ constexpr DrivetrainInfo::DrivetrainInfo(
           (motor_count * motor_max_nm * gear_ratio_to_motor) /
           ((wheel_diameter / 39.37) * (robot_mass / 2.20462)) * 39.37 * slew_constant),
       left_motors(left_motors_ptr),
-      right_motors(right_motors_ptr)
+      right_motors(right_motors_ptr),
+      all_motors()
 {
+  all_motors->append(*left_motors);
+  all_motors->append(*right_motors);
 }
 
 // Getter methods
@@ -82,3 +86,5 @@ float DrivetrainInfo::gearRatioToWheel() const { return gear_ratio_to_wheel; }
 float DrivetrainInfo::gearRatioToMotor() const { return gear_ratio_to_motor; }
 float DrivetrainInfo::maxSpeed() const { return max_speed; }
 float DrivetrainInfo::maxAcceleration() const { return max_acceleration; }
+pros::MotorGroup *DrivetrainInfo::leftMotors() const { return left_motors; }
+pros::MotorGroup *DrivetrainInfo::rightMotors() const { return right_motors; }

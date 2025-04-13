@@ -13,14 +13,16 @@
 
 #include "motion.hpp"
 
-struct ChassisCommand
-{
-  float linear_velocity;
-  float angular_velocity;
-};
+class Motion;  // Forward declaration
 
 class AbstractController
 {
  public:
+  /**
+   * @brief Return Chassis Commands, given a motion
+   *
+   * @param motion Motion info for the controller
+   * @return Chassis Command that the drivetrain can follow
+   */
   virtual ChassisCommand execute(const Motion &motion) = 0;
 };

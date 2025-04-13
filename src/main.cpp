@@ -1,8 +1,10 @@
 #include "main.h"
 
-void autonomous(void) {}
+#include "test/robot-config.hpp"
 
-void initialize(void) {}
+void initialize(void) { Drivetrain::setDrivetrainInfo(drivetrain_info); }
+
+void autonomous(void) {}
 
 void disabled(void) {}
 

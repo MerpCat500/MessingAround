@@ -129,6 +129,9 @@ class DrivetrainInfo
    */
   float maxAcceleration() const;
 
+  pros::MotorGroup *leftMotors() const;
+  pros::MotorGroup *rightMotors() const;
+
  private:
   // Private constructor
   constexpr DrivetrainInfo(
@@ -144,9 +147,10 @@ class DrivetrainInfo
       float slew_constant = 1.0f);
 
   // Member variables
-  const float track_width;   // Lateral distance between wheels
-  const float track_length;  // Longitudinal distance between wheels
-  const float robot_mass;    // Mass of robot in LBS
+  const float track_width;       // Lateral distance between wheels
+  const float track_width_half;  // Half of the track width
+  const float track_length;      // Longitudinal distance between wheels
+  const float robot_mass;        // Mass of robot in LBS
 
   const float wheel_diameter;       // Wheel diameter in inches
   const float wheel_circumference;  // Wheel circumference in inches
@@ -164,4 +168,6 @@ class DrivetrainInfo
 
   pros::MotorGroup *left_motors;   // Left motor group
   pros::MotorGroup *right_motors;  // Right motor group
+
+  pros::MotorGroup *all_motors;  // All motors combined
 };
