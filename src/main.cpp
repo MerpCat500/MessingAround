@@ -2,7 +2,10 @@
 
 #include "test/robot-config.hpp"
 
-void initialize(void) { Drivetrain::setDrivetrainInfo(drivetrain_info); }
+void initialize(void) {
+  Drivetrain::setDrivetrainInfo(drivetrain_info);
+  std::cout << "Drivetrain info set" << std::endl;
+}
 
 void autonomous(void) {}
 

@@ -25,9 +25,9 @@ BinPackParameters: false
 TabWidth: 2
 UseTab: Never
 
-BreakBeforeBinaryOperators: NonAssignment
-BreakConstructorInitializers: BeforeComma
-PenaltyBreakBeforeFirstCallParameter: 0
-PenaltyBreakMethodCall: 0
-PenaltyReturnTypeOnItsOwnLine: 0
-ContinuationIndentWidth: 2
+# BreakBeforeBinaryOperators: NonAssignment
+# BreakConstructorInitializers: BeforeComma
+# PenaltyBreakBeforeFirstCallParameter: 0
+# PenaltyBreakMethodCall: 0
+# PenaltyReturnTypeOnItsOwnLine: 0
+# ContinuationIndentWidth: 2

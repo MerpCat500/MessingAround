@@ -1,29 +1,9 @@
-/**
- * @file motion.hpp
- * @author Andrew Hilton (2131H)
- * @brief A header file for motion class
- * @version 0.1
- * @date 2025-04-12
- *
- * @copyright Copyright (c) 2025
- *
- */
 
 #pragma once
-
+#include <cmath>
 #include <cstdint>
 #include <optional>
-
-#ifndef DRIVETRAIN_UTIL_INCLUDED
-#include "drivetrain-util.hpp"
-#define DRIVETRAIN_UTIL_INCLUDED
-#endif
-
-#include "abstract-controller.hpp"
-#include "motion-executer.hpp"
-
-class AbstractController;  // Forward declaration
-class Motion;              // Forward declaration
+#include <stdexcept>
 
 enum class TURN_DIRECTION
 {
@@ -34,15 +14,8 @@ enum class TURN_DIRECTION
 
 struct Motion
 {
-  Motion(
-      uint32_t timeout,
-      float position_tolerance,
-      float angle_tolerance,
-      AbstractController *controller)
-      : timeout(timeout),
-        position_tolerance(position_tolerance),
-        angle_tolerance(angle_tolerance),
-        controller(controller)
+  Motion(uint32_t timeout, float position_tolerance, float angle_tolerance)
+      : timeout(timeout), position_tolerance(position_tolerance), angle_tolerance(angle_tolerance)
   {
   }
 
@@ -97,8 +70,11 @@ struct Motion
   float getAngleTolerance() const { return angle_tolerance; }
   TURN_DIRECTION getPreferredTurnDirection() const { return preferred_turn_direction; }
 
-  ChassisCommand getControllerCommand() { return controller->execute(*this); }
-  void execute() { MotionExecuter::get().addMotion(this); }
+  void execute()
+  {  // TODO ADD
+  }
+
+  // TODO add timeout check
   bool isFinished(float x, float y, float theta)
   {
     if (target_x.has_value() && target_y.has_value() && target_theta.has_value())
@@ -133,6 +109,4 @@ struct Motion
   float angle_tolerance;
 
   TURN_DIRECTION preferred_turn_direction = TURN_DIRECTION::AUTO;
-
-  AbstractController *controller;
 };
